@@ -1,0 +1,57 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+}
+.logo{
+    text-align: center;
+    font-family: "Courier", serif;
+    font-size: 24px;
+}
+.game-board{
+    margin: 10px auto;
+    max-width: fit-content;
+    padding: 10px;
+    width: 100%;
+    display:grid;
+    grid-template-columns: repeat(5, 0.1fr);
+    row-gap: 20px;
+    column-gap: 8px;
+}
+.board-letter{
+    border: 3px solid #b8b8b8;
+    font-family: "Courier", serif;
+    height: 40px;
+    width: 40px;
+    font-size: 24px;
+    text-transform: capitalize;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.nav{
+     height: 60px;
+    margin-top: 40px;
+}
+.loading{
+    text-align: center;
+}
+.hidden{
+    display: none;
+}
+.wrongLetter{
+    border: 3px solid #ff5f5f;
+}
+.correctLetter{
+    background: #c18300;
+    color: #f8f8f8;
+}
+.correctWord{
+    background: #6c6c6c;
+    color: #f8f8f8;
+}
+.correctPos{
+    background: #006e00;
+    color: #f8f8f8;
+}
