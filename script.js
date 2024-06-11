@@ -56,7 +56,7 @@ function initGame(){
                     currentWord="";
 
                     console.log(id);
-                    if(wordCount===6 && id===30){
+                    if(wordCount===6 && id===30 && !gameWon){
                         
                         alert("you lost!\n The word is "+theWord);
                     }
