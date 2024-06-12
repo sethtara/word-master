@@ -14,7 +14,6 @@ function initGame(){
         const response= await fetch(apiUrl);
         const data=await response.json().then(hideLoading());
         theWord= data.word;
-        theWord="daddy";
     }
     
     async function validateWord(word){
