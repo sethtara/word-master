@@ -55,7 +55,6 @@ function initGame(){
                     wordCount+=1;
                     currentWord="";
 
-                    console.log(id);
                     if(wordCount===6 && id===30 && !gameWon){
                         
                         alert("you lost!\n The word is "+theWord);
@@ -114,16 +113,25 @@ function updateStyle(wordCount,currentWord,theWord){
         let letterPos="#letter-"+n;
         const letterDiv=document.querySelector(letterPos);
         if(currentWord[i]===theWord[i]){
+            wordObj.set(currentWord[i],wordObj.get(currentWord[i])-1);
             letterDiv.classList.add("correctPos");
-            wordObj.set(theWord[i],wordObj.get(theWord[i])-1);
         }
-        if(theWord.includes(currentWord[i]) && wordObj.get(theWord[i])>0){
-            letterDiv.classList.add("correctLetter");
-        }
-        else{
-            letterDiv.classList.add("correctWord");
-        }
+        
     }
+    for(let i=0;i<5;i++){
+        let n=wordCount*5+i;
+        let letterPos="#letter-"+n;
+        const letterDiv=document.querySelector(letterPos);
+    if(theWord.includes(currentWord[i]) && (wordObj.get(currentWord[i])>0)){
+            letterDiv.classList.add("correctLetter");
+            wordObj.set(currentWord[i],wordObj.get(currentWord[i])-1);
+            console.log(wordObj);
+
+        }else{
+        letterDiv.classList.add("correctWord");
+    }
+    }
+
 }
 
  
