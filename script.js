@@ -51,7 +51,7 @@ function initGame(){
                     gameWon=true;
                 }
                 if(isValidWord){
-                    updateStyle(wordCount,currentWord,theWord);
+                    updateStyle(wordCount,currentWord,theWord,gameWon);
                     wordCount+=1;
                     currentWord="";
 
@@ -103,7 +103,7 @@ function wrongWord(wordCount){
 
 
 
-function updateStyle(wordCount,currentWord,theWord){
+function updateStyle(wordCount,currentWord,theWord,gameWon){
     let wordObj= new Map();
     for(const char of theWord){
         wordObj.set(char,(wordObj.get(char)||0)+1);
@@ -118,19 +118,22 @@ function updateStyle(wordCount,currentWord,theWord){
         }
         
     }
-    for(let i=0;i<5;i++){
-        let n=wordCount*5+i;
-        let letterPos="#letter-"+n;
-        const letterDiv=document.querySelector(letterPos);
-    if(theWord.includes(currentWord[i]) && (wordObj.get(currentWord[i])>0)){
-            letterDiv.classList.add("correctLetter");
-            wordObj.set(currentWord[i],wordObj.get(currentWord[i])-1);
-            console.log(wordObj);
+    if(!gameWon){
+        for(let i=0;i<5;i++){
+            let n=wordCount*5+i;
+            let letterPos="#letter-"+n;
+            const letterDiv=document.querySelector(letterPos);
+            if(theWord.includes(currentWord[i]) && (wordObj.get(currentWord[i])>0)){
+                letterDiv.classList.add("correctLetter");
+                wordObj.set(currentWord[i],wordObj.get(currentWord[i])-1);
+                console.log(wordObj);
 
-        }else{
-        letterDiv.classList.add("correctWord");
+            }else{
+                letterDiv.classList.add("correctWord");
+            }
+        }
     }
-    }
+    
 
 }
 
