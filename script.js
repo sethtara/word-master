@@ -14,6 +14,7 @@ function initGame(){
         const response= await fetch(apiUrl);
         const data=await response.json().then(hideLoading());
         theWord= data.word;
+        theWord="daddy";
     }
     
     async function validateWord(word){
@@ -123,7 +124,7 @@ function updateStyle(wordCount,currentWord,theWord,gameWon){
             let n=wordCount*5+i;
             let letterPos="#letter-"+n;
             const letterDiv=document.querySelector(letterPos);
-            if(theWord.includes(currentWord[i]) && (wordObj.get(currentWord[i])>0)){
+            if( !(currentWord[i]===theWord[i]) && theWord.includes(currentWord[i]) && (wordObj.get(currentWord[i])>0)){
                 letterDiv.classList.add("correctLetter");
                 wordObj.set(currentWord[i],wordObj.get(currentWord[i])-1);
                 console.log(wordObj);
@@ -133,8 +134,5 @@ function updateStyle(wordCount,currentWord,theWord,gameWon){
             }
         }
     }
-    
 
 }
-
- 
